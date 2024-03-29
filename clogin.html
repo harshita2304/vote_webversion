@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Candidate Login</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f2f2f2;
+        text-align: center;
+      }
+
+      .container {
+        max-width: 400px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      form {
+        margin-top: 20px;
+        text-align: left;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      .warning {
+        text-align: left;
+        margin-top: 20px;
+      }
+
+      .warning:before {
+        content: "⚠️";
+        margin-right: 5px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Candidate Login</h1>
+      <form action="#" method="post">
+        <input
+          type="text"
+          name="candidate_id"
+          placeholder="Candidate ID"
+          required
+        /><br />
+        <input
+          type="password"
+          name="password"
+          placeholder="Password"
+          required
+        /><br />
+        <button type="submit">Login</button>
+        <div>
+          <a href="/forgot.html" target="_blank">Forgot your password? Reset.</a
+          ><br />
+        </div>
+        <div>
+          <a href="/signup.html" target="_blank"
+            >Not a user? Register as a Candidate</a
+          ><br />
+        </div>
+      </form>
+      <div class="warning">
+        ⚠️ Warning: Candidate ID is the same as the Candidate's Mobile Number.
+      </div>
+    </div>
+  </body>
+</html>

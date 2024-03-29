@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Online Voting System</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="candidates">
+        <div class="candidate">
+          <h2>HARSHITA SRIVASTAVA</h2>
+          <button onclick="vote('HARSHITA')">Vote</button>
+        </div>
+        <div class="candidate">
+          <h2>VARTIKA SRIVASTAVA</h2>
+          <button onclick="vote('VARTIKA')">Vote</button>
+        </div>
+        <div class="candidate">
+          <h2>DEEPTI SRIVASTAVA</h2>
+          <button onclick="vote('DEEPTI')">Vote</button>
+        </div>
+      </div>
+
+      <div id="voteUpdate"></div>
+
+      <div id="winnerPopup" style="display: none">
+        <h2>Winner!</h2>
+        <p id="winnerText"></p>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

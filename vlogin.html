@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VOTER LOGIN PAGE</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7; /* Set background color */
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      form {
+        margin-top: 50px;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 250px;
+        padding: 8px;
+        margin-bottom: 15px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+      }
+
+      a {
+        text-decoration: none;
+        color: #007bff;
+        margin-top: 10px;
+      }
+
+      button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello Voter, Welcome to VOTOIn</h1>
+    <form action="/submit-login" method="post">
+      <div>
+        <label for="mobile_number">Mobile Number:</label><br />
+        <input
+          type="tel"
+          id="mobile_number"
+          name="mobile_number"
+          required
+        /><br />
+      </div>
+      <div>
+        <label for="otp">OTP sent to your number:</label><br />
+        <input type="number" id="otp" name="otp" required /><br />
+      </div>
+      <div>
+        <a href="/forgot.html" target="_blank">Forgot your password? Reset.</a
+        ><br />
+      </div>
+      <div>
+        <a href="/signup.html" target="_blank">Not a user? Sign Up as a Voter</a
+        ><br />
+      </div>
+      <div>
+        <button type="submit">Login</button>
+      </div>
+    </form>
+  </body>
+</html>
