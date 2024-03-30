@@ -66,33 +66,32 @@
   <body>
     <div class="container">
       <h1>Registration Form</h1>
-      <form action="#" method="post">
+      <form action="/submit-form" method="post">
         <input
           type="text"
-          name="first_name"
+          name="F_name"
           placeholder="First Name"
           required
         /><br />
         <input
           type="text"
-          name="last_name"
+          name="L_name"
           placeholder="Last Name"
+          required
+        /><br />
+        <input
+          type="text"
+          name="password"
+          placeholder="PASSWORD(6 DIGITS NUMERIC)"
           required
         /><br />
         <input type="email" name="email" placeholder="Email" required /><br />
         <input
           type="tel"
-          name="mobile_number"
+          name="mobile"
           placeholder="Mobile Number"
           required
         /><br />
-        <input
-          type="number"
-          name="otp"
-          placeholder="Enter OTP"
-          required
-        /><br />
-        <!-- OTP verification field -->
         <textarea
           name="address"
           placeholder="Address"
@@ -109,17 +108,17 @@
         /><br />
         <input
           type="number"
-          name="aadhaar_no"
+          name="adhaar"
           placeholder="Aadhaar Number"
           required
         /><br />
         <input
           type="text"
-          name="voter_id"
+          name="voterid"
           placeholder="Voter ID"
           required
         /><br />
-        <input type="file" name="image" accept="image/*" required /><br />
+        <input type="file" name="image" accept="image/*" /><br />
         <button type="submit">Register</button>
       </form>
     </div>

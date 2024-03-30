@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registration Successful</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f7f7f7;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        margin-bottom: 20px;
+      }
+    </style>
+    <script>
+      // Redirect function
+      function redirectToLoginPage(role) {
+        if (role === "voter") {
+          window.location.href = "/vlogin.html"; // Redirect to voter login page
+        } else if (role === "candidate") {
+          window.location.href = "/clogin.html"; // Redirect to candidate login page
+        }
+      }
+
+      // Function to extract role from URL query parameter
+      function getRoleFromURL() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get("role");
+      }
+
+      // Perform redirection on page load
+      window.onload = function () {
+        const role = getRoleFromURL();
+        if (role) {
+          redirectToLoginPage(role);
+        } else {
+          // Handle invalid or missing role parameter
+          console.error("Invalid or missing role parameter in URL");
+        }
+      };
+    </script>
+  </head>
+  <body>
+    <h1>Registration Successful</h1>
+    <p>Your registration was successful!</p>
+  </body>
+</html>

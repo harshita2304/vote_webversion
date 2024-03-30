@@ -54,23 +54,23 @@
       button:hover {
         background-color: #0056b3;
       }
+
+      #errorMessage {
+        color: red;
+        margin-top: 10px;
+      }
     </style>
   </head>
   <body>
     <h1>Hello Voter, Welcome to VOTOIn</h1>
-    <form action="/submit-login" method="post">
+    <form id="loginForm" method="post">
       <div>
-        <label for="mobile_number">Mobile Number:</label><br />
-        <input
-          type="tel"
-          id="mobile_number"
-          name="mobile_number"
-          required
-        /><br />
+        <label for="mobile">Mobile Number:</label><br />
+        <input type="tel" id="mobile" name="mobile" required /><br />
       </div>
       <div>
-        <label for="otp">OTP sent to your number:</label><br />
-        <input type="number" id="otp" name="otp" required /><br />
+        <label for="password">Password:</label><br />
+        <input type="password" id="password" name="password" required /><br />
       </div>
       <div>
         <a href="/forgot.html" target="_blank">Forgot your password? Reset.</a
@@ -83,6 +83,41 @@
       <div>
         <button type="submit">Login</button>
       </div>
+      <div id="errorMessage"></div>
+      <!-- Error message container -->
     </form>
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Prevent form submission
+
+          var mobile = document.getElementById("mobile").value;
+          var password = document.getElementById("password").value;
+
+          // Make AJAX request to server for authentication
+          var xhr = new XMLHttpRequest();
+          xhr.open("POST", "/authenticate", true);
+          xhr.setRequestHeader("Content-Type", "application/json");
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+              var response = JSON.parse(xhr.responseText);
+              if (response.success) {
+                // Redirect to vfunc.html if authentication is successful
+                window.location.href = "/vfunc.html";
+              } else {
+                // Show error message if authentication fails
+                if (response.errorType === "notFound") {
+                  alert("User not found, Register");
+                } else {
+                  document.getElementById("errorMessage").textContent =
+                    response.message;
+                }
+              }
+            }
+          };
+          xhr.send(JSON.stringify({ mobile: mobile, password: password }));
+        });
+    </script>
   </body>
 </html>
