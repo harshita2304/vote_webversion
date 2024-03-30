@@ -66,7 +66,7 @@
   <body>
     <div class="container">
       <h1>Registration Form</h1>
-      <form action="/submit-form" method="post">
+      <form id="registrationForm" method="post">
         <input
           type="text"
           name="F_name"
@@ -80,9 +80,10 @@
           required
         /><br />
         <input
-          type="text"
+          type="password"
           name="password"
-          placeholder="PASSWORD(6 DIGITS NUMERIC)"
+          placeholder="Password (6 digits numeric)"
+          pattern="[0-9]{6}"
           required
         /><br />
         <input type="email" name="email" placeholder="Email" required /><br />
@@ -90,6 +91,7 @@
           type="tel"
           name="mobile"
           placeholder="Mobile Number"
+          pattern="[0-9]{10}"
           required
         /><br />
         <textarea
@@ -119,8 +121,28 @@
           required
         /><br />
         <input type="file" name="image" accept="image/*" /><br />
+        <input type="hidden" name="type" id="registrationType" value="voter" />
+        <!-- Hidden field to store registration type -->
         <button type="submit">Register</button>
       </form>
     </div>
+
+    <script>
+      // Check if the role selection dropdown is present to determine the registration type
+      window.addEventListener("DOMContentLoaded", () => {
+        const roleSelect = document.getElementById("role");
+        const registrationTypeInput =
+          document.getElementById("registrationType");
+
+        // Listen for changes in the role selection
+        roleSelect.addEventListener("change", () => {
+          // Set the value of the hidden input field based on the selected role
+          registrationTypeInput.value = roleSelect.value;
+        });
+
+        // Initialize the registration type based on the default selected role
+        registrationTypeInput.value = roleSelect.value;
+      });
+    </script>
   </body>
 </html>

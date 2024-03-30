@@ -13,33 +13,52 @@
         text-align: center;
       }
 
+      .container {
+        margin-top: 50px;
+      }
+
       h1 {
         color: #333;
       }
 
-      a {
+      .button {
         text-decoration: none;
-        color: #007bff;
+        color: #fff;
+        background-color: #007bff;
         font-size: 18px;
         margin-bottom: 20px;
-        display: inline-block;
         padding: 10px 20px;
         border: 2px solid #007bff;
         border-radius: 5px;
         transition: background-color 0.3s, color 0.3s;
+        cursor: pointer;
       }
 
-      a:hover {
-        background-color: #007bff;
-        color: #fff;
+      .button:hover {
+        background-color: #0056b3;
+      }
+
+      .button + .button {
+        margin-left: 10px;
       }
     </style>
   </head>
   <body>
-    <h1>Login as</h1>
-    <a href="/vlogin.html"><b>VOTER</b></a
-    ><br />
-    <a href="/clogin.html"><b>CANDIDATE</b></a
-    ><br />
+    <div class="container">
+      <h1>Welcome to VOTOIn</h1>
+      <p>Please select your role:</p>
+      <button class="button" onclick="redirectToSignup('voter')">
+        Register as Voter
+      </button>
+      <button class="button" onclick="redirectToSignup('candidate')">
+        Register as Candidate
+      </button>
+    </div>
+
+    <script>
+      function redirectToSignup(type) {
+        window.location.href = `/signup?type=${type}`;
+      }
+    </script>
   </body>
 </html>

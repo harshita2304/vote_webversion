@@ -1,8 +1,17 @@
 const express = require("express");
 const mysql = require("mysql");
+const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
+// Middleware to serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, "public")));
+
+// Route handler for serving signup.html
+app.get("/signup", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "signup.html"));
+});
 
 // MySQL Connection Configuration
 const connection = mysql.createConnection({
@@ -26,7 +35,10 @@ app.use(express.json());
 
 // Handle form submission
 app.post("/submit-form", (req, res) => {
-  const registrationType = req.body.registrationType;
+  const registrationData = req.body;
+
+  // Determine the registration type based on the received data
+  const registrationType = req.body.type;
 
   if (registrationType === "voter") {
     handleVoterRegistration(req, res);
@@ -41,70 +53,38 @@ app.post("/submit-form", (req, res) => {
 function handleVoterRegistration(req, res) {
   const voterData = req.body;
 
-  const query =
-    "INSERT INTO voter (F_name, L_name, password, email, mobile, address, city, country, adhaar, voterid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  // Insert voter data into the database
+  const query = "INSERT INTO voter SET ?";
 
-  connection.query(
-    query,
-    [
-      voterData.F_name,
-      voterData.L_name,
-      voterData.password,
-      voterData.email,
-      voterData.mobile,
-      voterData.address,
-      voterData.city,
-      voterData.country,
-      voterData.adhaar,
-      voterData.voterid,
-    ],
-    (err, result) => {
-      if (err) {
-        console.error("Error inserting data into voter table:", err);
-        res.status(500).send("Internal Server Error");
-        return;
-      }
-
-      console.log("Data inserted into voter table successfully");
-      // Redirect to the registration successful page
-      res.redirect("/submit-form?role=voter");
+  connection.query(query, voterData, (err, result) => {
+    if (err) {
+      console.error("Error inserting data into voter table:", err);
+      res.status(500).send("Internal Server Error");
+      return;
     }
-  );
+
+    console.log("Data inserted into voter table successfully");
+    res.redirect("/registration-successful?type=voter");
+  });
 }
 
 // Handle candidate registration
 function handleCandidateRegistration(req, res) {
   const candidateData = req.body;
 
-  const query =
-    "INSERT INTO candidate (F_name, L_name, password, email, mobile, address, city, country, adhaar, voterid) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+  // Insert candidate data into the database
+  const query = "INSERT INTO candidate SET ?";
 
-  connection.query(
-    query,
-    [
-      candidateData.F_name,
-      candidateData.L_name,
-      candidateData.password,
-      candidateData.email,
-      candidateData.mobile,
-      candidateData.address,
-      candidateData.city,
-      candidateData.country,
-      candidateData.adhaar,
-      candidateData.voterid,
-    ],
-    (err, result) => {
-      if (err) {
-        console.error("Error inserting data into candidate table:", err);
-        res.status(500).send("Internal Server Error");
-        return;
-      }
-
-      console.log("Data inserted into candidate table successfully");
-      // Redirect to the registration successful page
-      res.redirect("/submit-form?role=candidate");
+  connection.query(query, candidateData, (err, result) => {
+    if (err) {
+      console.error("Error inserting data into candidate table:", err);
+      res.status(500).send("Internal Server Error");
+      return;
     }
-  );
+
+    console.log("Data inserted into candidate table successfully");
+    res.redirect("/registration-successful?type=candidate");
+  });
 }
 
 // Start the server
