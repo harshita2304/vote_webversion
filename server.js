@@ -2,14 +2,14 @@ const express = require("express");
 const mysql = require("mysql");
 
 const app = express();
-const PORT = process.env.PORT || 3600;
+const PORT = process.env.PORT || 3001;
 
 // MySQL Connection Configuration
 const connection = mysql.createConnection({
   host: "127.0.0.1",
   user: "root",
-  password: "harshita@23",
-  database: "VOTOIn",
+  password: "123456",
+  database: "votingdb",
 });
 
 // Connect to MySQL
