@@ -3,14 +3,20 @@ const mysql = require("mysql");
 const path = require("path");
 
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 5500;
 
 // Middleware to serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
 
 // Route handler for serving signup.html
 app.get("/signup", (req, res) => {
-  console.log("Received request for /signup");
+  console.log(
+    "Received request for /signup with query parameter:",
+    req.query.type
+  );
+  // Handle the request based on the query parameter 'type'
+  // For example, you can serve different HTML files or perform different actions based on the 'type'
+  // res.sendFile() or other actions
   res.sendFile(path.join(__dirname, "public", "signup.html"));
 });
 
