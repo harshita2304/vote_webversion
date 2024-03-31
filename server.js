@@ -10,6 +10,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Route handler for serving signup.html
 app.get("/signup", (req, res) => {
+  console.log("Received request for /signup");
   res.sendFile(path.join(__dirname, "public", "signup.html"));
 });
 
