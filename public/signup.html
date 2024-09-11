@@ -5,61 +5,138 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign up page/ Registration Form</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Poppins", Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f2f2f2;
-        text-align: center;
+        background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
 
       .container {
         max-width: 600px;
-        margin: 50px auto;
-        padding: 20px;
+        width: 100%;
+        padding: 30px;
         background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeIn 1s ease-in-out;
       }
 
       h1 {
         color: #333;
+        font-size: 36px;
+        text-align: center;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 1.5px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
       }
 
       form {
         margin-top: 20px;
-        text-align: left;
       }
 
       input[type="text"],
       input[type="email"],
       input[type="tel"],
       input[type="number"],
-      textarea {
+      input[type="password"],
+      textarea,
+      input[type="file"] {
         width: 100%;
-        padding: 10px;
-        margin: 10px 0;
-        border-radius: 5px;
+        padding: 12px;
+        margin-bottom: 15px;
+        border-radius: 8px;
         border: 1px solid #ccc;
         box-sizing: border-box;
+        font-size: 16px;
+        transition: all 0.3s ease;
       }
 
-      input[type="file"] {
-        margin-top: 10px;
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus,
+      input[type="number"]:focus,
+      input[type="password"]:focus,
+      textarea:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        outline: none;
       }
 
       button {
-        padding: 10px 20px;
+        width: 100%;
+        padding: 15px;
         background-color: #007bff;
         color: #fff;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s ease, transform 0.3s ease;
       }
 
       button:hover {
         background-color: #0056b3;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+      }
+
+      button:active {
+        transform: translateY(0);
+        box-shadow: none;
+      }
+
+      /* File input styling */
+      input[type="file"] {
+        font-size: 16px;
+        border: none;
+        background: none;
+        color: #333;
+        cursor: pointer;
+      }
+
+      input[type="file"]::file-selector-button {
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      input[type="file"]::file-selector-button:hover {
+        background-color: #0056b3;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 28px;
+        }
+
+        button {
+          font-size: 16px;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
@@ -122,26 +199,8 @@
         /><br />
         <input type="file" name="image" accept="image/*" /><br />
         <input type="hidden" name="type" id="registrationType" value="voter" />
-        <!-- Hidden field to store registration type -->
         <button type="submit">Register</button>
       </form>
     </div>
-    <!-- <script>
-      // Check if the role selection dropdown is present to determine the registration type
-      window.addEventListener("DOMContentLoaded", () => {
-        const roleSelect = document.getElementById("role");
-        const registrationTypeInput =
-          document.getElementById("registrationType");
-
-        // Listen for changes in the role selection
-        roleSelect.addEventListener("change", () => {
-          // Set the value of the hidden input field based on the selected role
-          registrationTypeInput.value = roleSelect.value;
-        });
-
-        // Initialize the registration type based on the default selected role
-        registrationTypeInput.value = roleSelect.value;
-      });
-    </script> -->
   </body>
 </html>

@@ -5,25 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Candidate Login</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Poppins", Arial, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f2f2f2;
-        text-align: center;
+        background: linear-gradient(135deg, #e0eafc, #cfdef3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
       }
 
       .container {
         max-width: 400px;
-        margin: 50px auto;
-        padding: 20px;
+        width: 100%;
+        padding: 30px;
         background-color: #fff;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        animation: fadeInUp 1s ease-in-out;
       }
 
       h1 {
-        color: #333;
+        font-size: 28px;
+        color: #007bff;
+        margin-bottom: 20px;
+        text-shadow: 1px 1px 5px rgba(0, 123, 255, 0.2);
       }
 
       form {
@@ -34,41 +43,84 @@
       input[type="text"],
       input[type="password"] {
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         margin: 10px 0;
-        border-radius: 5px;
+        border-radius: 8px;
         border: 1px solid #ccc;
         box-sizing: border-box;
+        font-size: 16px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
       }
 
-      .warning {
-        text-align: left;
-        margin-top: 20px;
-      }
-
-      .warning:before {
-        content: "⚠️";
-        margin-right: 5px;
+      input[type="text"]:focus,
+      input[type="password"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+        outline: none;
       }
 
       button {
-        padding: 10px 20px;
+        width: 100%;
+        padding: 12px;
         background-color: #007bff;
         color: #fff;
         border: none;
-        border-radius: 5px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 600;
         cursor: pointer;
-        transition: background-color 0.3s;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
       }
 
       button:hover {
         background-color: #0056b3;
+        transform: translateY(-3px);
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+      }
+
+      button:active {
+        transform: translateY(0);
+        box-shadow: none;
       }
 
       a {
-        text-decoration: none;
+        display: block;
         color: #007bff;
+        text-decoration: none;
         margin-top: 10px;
+        font-size: 16px;
+        transition: color 0.3s ease;
+      }
+
+      a:hover {
+        color: #0056b3;
+      }
+
+      .warning {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #dc3545;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+      }
+
+      .warning:before {
+        content: "⚠️";
+        margin-right: 10px;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
@@ -90,15 +142,13 @@
         <div>
           <a href="/forgot.html" target="_blank">Forgot your password? Reset.</a
           ><br />
-        </div>
-        <div>
-          <a href="/signup.html" target="_blank"
+          <a href="public/signup.html" target="_blank"
             >Not a user? Register as a Candidate</a
           ><br />
         </div>
       </form>
       <div class="warning">
-        ⚠️ Warning: Candidate ID is the same as the Candidate's Mobile Number.
+        Warning: Candidate ID is the same as the Candidate's Mobile Number.
       </div>
     </div>
   </body>
